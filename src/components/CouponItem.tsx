@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { copyToClipboard } from '../services/ClipboardService';
+import { Coupon } from '../types';
 
-const CouponItem = ({ coupon }) => {
+interface CouponItemProps {
+  coupon: Coupon;
+}
+
+const CouponItem: React.FC<CouponItemProps> = ({ coupon }) => {
   const [showToast, setShowToast] = useState(false);
   
   const handleCopyClick = () => {
@@ -13,7 +18,7 @@ const CouponItem = ({ coupon }) => {
   };
 
   // Format expiry date
-  const formatExpiryDate = (dateString) => {
+  const formatExpiryDate = (dateString?: string) => {
     if (!dateString) return 'No expiry date';
     
     const expiryDate = new Date(dateString);
@@ -28,7 +33,7 @@ const CouponItem = ({ coupon }) => {
     }
     
     // Calculate days remaining
-    const diffTime = Math.abs(expiryDate - today);
+    const diffTime = Math.abs(expiryDate.getTime() - today.getTime());
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     
     if (diffDays === 0) {

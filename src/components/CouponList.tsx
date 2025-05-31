@@ -1,7 +1,12 @@
-import React from 'react';
 import CouponItem from './CouponItem';
+import { Coupon } from '../types';
 
-const CouponList = ({ coupons, title }) => {
+interface CouponListProps {
+  coupons: Coupon[];
+  title: string;
+}
+
+const CouponList: React.FC<CouponListProps> = ({ coupons, title }) => {
   return (
     <div className="coupon-list">
       <h2>{title}</h2>

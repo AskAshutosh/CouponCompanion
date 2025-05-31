@@ -1,20 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useCouponContext } from '../context/CouponContext';
 import { copyToClipboard } from '../services/ClipboardService';
+import { Coupon } from '../types';
 
-const FloatingOverlay = ({ onClose }) => {
+interface FloatingOverlayProps {
+  onClose: () => void;
+}
+
+const FloatingOverlay: React.FC<FloatingOverlayProps> = ({ onClose }) => {
   const { coupons } = useCouponContext();
   const [position, setPosition] = useState({ x: window.innerWidth - 230, y: 100 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [showToast, setShowToast] = useState(false);
   const [currentStore, setCurrentStore] = useState('');
-  const [filteredCoupons, setFilteredCoupons] = useState([]);
+  const [filteredCoupons, setFilteredCoupons] = useState<Coupon[]>([]);
   
-  const overlayRef = useRef(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   
   // Handle dragging
-  const handleMouseDown = (e) => {
+  const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
     setDragOffset({
       x: e.clientX - position.x,
@@ -22,7 +27,7 @@ const FloatingOverlay = ({ onClose }) => {
     });
   };
   
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: MouseEvent) => {
     if (isDragging) {
       const newX = e.clientX - dragOffset.x;
       const newY = e.clientY - dragOffset.y;
@@ -73,7 +78,7 @@ const FloatingOverlay = ({ onClose }) => {
     }
   }, [currentStore, coupons]);
   
-  const handleCopyClick = (code) => {
+  const handleCopyClick = (code: string) => {
     copyToClipboard(code);
     setShowToast(true);
     setTimeout(() => {

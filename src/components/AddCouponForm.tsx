@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useCouponContext } from '../context/CouponContext';
 
-const AddCouponForm = ({ onClose }) => {
+interface AddCouponFormProps {
+  onClose: () => void;
+}
+
+const AddCouponForm: React.FC<AddCouponFormProps> = ({ onClose }) => {
   const { addCoupon, getCategories } = useCouponContext();
   const existingCategories = getCategories();
   
@@ -16,7 +20,7 @@ const AddCouponForm = ({ onClose }) => {
   
   const [useNewCategory, setUseNewCategory] = useState(false);
   
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -24,7 +28,7 @@ const AddCouponForm = ({ onClose }) => {
     });
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validate form
@@ -53,7 +57,7 @@ const AddCouponForm = ({ onClose }) => {
       category: categoryToUse,
       code: formData.code.trim(),
       description: formData.description.trim(),
-      expiryDate: formData.expiryDate || null,
+      expiryDate: formData.expiryDate || undefined,
     });
     
     onClose();

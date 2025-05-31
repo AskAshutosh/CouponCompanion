@@ -5,18 +5,31 @@ import CouponList from './components/CouponList';
 import SearchBar from './components/SearchBar';
 import AddCouponForm from './components/AddCouponForm';
 import FloatingOverlay from './components/FloatingOverlay';
+import ExpirationTracker from './components/ExpirationTracker';
+import AutoDetectionSettings from './components/AutoDetectionSettings';
 import { useCouponContext } from './context/CouponContext';
+import { Coupon } from './types';
 
 // Add this to console log when app initializes
 console.log('CouponKeeper application initializing...');
 
 function App() {
-  const { coupons, searchCoupons } = useCouponContext();
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [showFloatingOverlay, setShowFloatingOverlay] = useState(false);
-  const [filteredCoupons, setFilteredCoupons] = useState([]);
+  const { 
+    coupons, 
+    searchCoupons, 
+    getExpiredCoupons, 
+    getExpiringSoonCoupons,
+    enableAutoDetection,
+    isAutoDetectionEnabled 
+  } = useCouponContext();
+  
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [showAddForm, setShowAddForm] = useState<boolean>(false);
+  const [showFloatingOverlay, setShowFloatingOverlay] = useState<boolean>(false);
+  const [showExpirationTracker, setShowExpirationTracker] = useState<boolean>(false);
+  const [showAutoDetectionSettings, setShowAutoDetectionSettings] = useState<boolean>(false);
+  const [filteredCoupons, setFilteredCoupons] = useState<Coupon[]>([]);
 
   // Handle category selection
   const handleCategorySelect = (category) => {

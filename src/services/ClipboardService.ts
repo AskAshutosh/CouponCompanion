@@ -1,5 +1,5 @@
 // Function to copy text to clipboard
-export const copyToClipboard = (text) => {
+export const copyToClipboard = (text: string): void => {
   // Modern browsers
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text)
@@ -14,7 +14,7 @@ export const copyToClipboard = (text) => {
 };
 
 // Fallback method using document.execCommand (deprecated but still works in some browsers)
-const fallbackCopyToClipboard = (text) => {
+const fallbackCopyToClipboard = (text: string): void => {
   const textArea = document.createElement('textarea');
   textArea.value = text;
   

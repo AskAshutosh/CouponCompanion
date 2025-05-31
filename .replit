@@ -21,11 +21,11 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "HOST=0.0.0.0 PORT=5000 WDS_SOCKET_PORT=0 npx react-scripts start"
+args = "BROWSER=none HOST=0.0.0.0 PORT=5000 WDS_SOCKET_PORT=0 npx react-scripts start"
 waitForPort = 5000
 
 [deployment]
-run = ["sh", "-c", "HOST=0.0.0.0 PORT=5000 WDS_SOCKET_PORT=0 npx react-scripts start"]
+run = ["sh", "-c", "BROWSER=none HOST=0.0.0.0 PORT=5000 WDS_SOCKET_PORT=0 npx react-scripts start"]
 
 [[ports]]
 localPort = 3000

@@ -10,9 +10,16 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^4.5.0",
+    "express": "^5.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "serve": "^14.2.4",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
   },
   "browserslist": {
     "production": [

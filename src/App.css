@@ -439,3 +439,249 @@ body {
   90% { opacity: 1; }
   100% { opacity: 0; }
 }
+
+/* Expiration Tracker Styles */
+.expiration-tracker {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tracker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.tracker-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.expiry-section {
+  margin-bottom: 25px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.section-title.expiring-soon {
+  color: #ff8800;
+}
+
+.section-title.expired {
+  color: #dc3545;
+}
+
+.expiry-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.expiry-item.expired {
+  opacity: 0.7;
+  background-color: #f8f9fa;
+}
+
+.no-expiry-issues {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}
+
+.no-expiry-issues i {
+  font-size: 48px;
+  color: #4CAF50;
+  margin-bottom: 15px;
+}
+
+/* Auto Detection Settings Styles */
+.auto-detection-settings {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.settings-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.setting-section {
+  margin-bottom: 25px;
+}
+
+.setting-item {
+  margin-bottom: 15px;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.toggle-text {
+  font-weight: 600;
+  color: #333;
+}
+
+.setting-description {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.sensitivity-options {
+  display: flex;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.radio-text {
+  color: #333;
+}
+
+.domain-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.domain-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.domain-item.trusted {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.domain-item.blacklisted {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+.domain-item button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+}
+
+.domain-item button:hover {
+  opacity: 1;
+}
+
+.add-domain {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.domain-type-select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.add-domain input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.add-domain button {
+  padding: 8px 16px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-domain button:hover {
+  background: #357abd;
+}
+
+.test-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.test-button:hover {
+  background: #218838;
+}
+
+.action-buttons .expiry-button {
+  background: linear-gradient(135deg, #ff8a00 0%, #e52e71 100%);
+}
+
+.action-buttons .settings-button {
+  background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+}

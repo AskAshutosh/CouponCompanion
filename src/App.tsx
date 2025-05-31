@@ -32,13 +32,13 @@ function App() {
   const [filteredCoupons, setFilteredCoupons] = useState<Coupon[]>([]);
 
   // Handle category selection
-  const handleCategorySelect = (category) => {
+  const handleCategorySelect = (category: string | null) => {
     setSelectedCategory(category);
     setSearchTerm('');
   };
 
   // Handle search
-  const handleSearch = (term) => {
+  const handleSearch = (term: string) => {
     setSearchTerm(term);
     setSelectedCategory(null);
   };
@@ -89,12 +89,30 @@ function App() {
           <button className="float-button" onClick={toggleFloatingOverlay}>
             <i className={`fas fa-external-link-alt ${showFloatingOverlay ? 'active' : ''}`}></i>
           </button>
+          <button className="expiry-button" onClick={() => setShowExpirationTracker(true)}>
+            <i className="fas fa-clock"></i>
+          </button>
+          <button className="settings-button" onClick={() => setShowAutoDetectionSettings(true)}>
+            <i className="fas fa-cog"></i>
+          </button>
         </div>
       </main>
       
       {showFloatingOverlay && (
         <FloatingOverlay 
           onClose={() => setShowFloatingOverlay(false)}
+        />
+      )}
+      
+      {showExpirationTracker && (
+        <ExpirationTracker 
+          onClose={() => setShowExpirationTracker(false)}
+        />
+      )}
+      
+      {showAutoDetectionSettings && (
+        <AutoDetectionSettings 
+          onClose={() => setShowAutoDetectionSettings(false)}
         />
       )}
     </div>
